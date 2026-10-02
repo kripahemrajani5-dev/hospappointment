@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <title>Hospital Appointment Management System</title>
+
+    <style>
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #eef5f8;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 80%;
+            max-width: 900px;
+            margin: 40px auto;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px #cccccc;
+        }
+
+        h1 {
+            text-align: center;
+            color: #176b87;
+        }
+
+        h2 {
+            color: #176b87;
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        input, select {
+            width: 95%;
+            padding: 10px;
+            margin-top: 5px;
+            margin-bottom: 15px;
+            border: 1px solid #cccccc;
+            border-radius: 5px;
+        }
+
+        button {
+            background-color: #176b87;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0e5268;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            border: 1px solid #cccccc;
+            padding: 10px;
+            text-align: center;
+        }
+
+        th {
+            background-color: #176b87;
+            color: white;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>Hospital Appointment Management System</h1>
+
+    <p style="text-align:center;">
+        Book your hospital appointment easily.
+    </p>
+
+    <hr>
+
+    <h2>Book Appointment</h2>
+
+    <form method="POST">
+
+        <label>Patient Name:</label><br>
+
+        <input
+            type="text"
+            name="patient_name"
+            placeholder="Enter patient name"
+            required
+        >
+
+        <label>Doctor:</label><br>
+
+        <select name="doctor" required>
+
+            <option value="">-- Select Doctor --</option>
+
+            <option value="Dr. Sharma">
+                Dr. Sharma - General Physician
+            </option>
+
+            <option value="Dr. Patel">
+                Dr. Patel - Cardiologist
+            </option>
+
+            <option value="Dr. Mehta">
+                Dr. Mehta - Pediatrician
+            </option>
+
+        </select>
+
+        <label>Appointment Date:</label><br>
+
+        <input
+            type="date"
+            name="date"
+            required
+        >
+
+        <label>Appointment Time:</label><br>
+
+        <input
+            type="time"
+            name="time"
+            required
+        >
+
+        <br>
+
+        <button type="submit">
+            Book Appointment
+        </button>
+
+    </form>
+
+    <hr>
+
+    <h2>Booked Appointments</h2>
+
+    {% if appointments %}
+
+    <table>
+
+        <tr>
+            <th>Patient Name</th>
+            <th>Doctor</th>
+            <th>Date</th>
+            <th>Time</th>
+        </tr>
+
+        {% for appointment in appointments %}
+
+        <tr>
+
+            <td>{{ appointment.patient_name }}</td>
+
+            <td>{{ appointment.doctor }}</td>
+
+            <td>{{ appointment.date }}</td>
+
+            <td>{{ appointment.time }}</td>
+
+        </tr>
+
+        {% endfor %}
+
+    </table>
+
+    {% else %}
+
+    <p>No appointments booked yet.</p>
+
+    {% endif %}
+
+</div>
+
+</body>
+</html>
