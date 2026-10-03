@@ -11,19 +11,19 @@ pipeline {
 
         stage('Check Python') {
             steps {
-                bat 'py --version'
+                bat '"C:\\Users\\kripa\\AppData\\Local\\Programs\\Python\\Python313\\python.exe" --version'
             }
         }
 
         stage('Install Dependencies') {
             steps {
-                bat 'py -m pip install -r requirements.txt'
+                bat '"C:\\Users\\kripa\\AppData\\Local\\Programs\\Python\\Python313\\python.exe" -m pip install -r requirements.txt'
             }
         }
 
         stage('Run Tests') {
             steps {
-                bat 'py -m pytest'
+                bat '"C:\\Users\\kripa\\AppData\\Local\\Programs\\Python\\Python313\\python.exe" -m pytest'
             }
         }
 
